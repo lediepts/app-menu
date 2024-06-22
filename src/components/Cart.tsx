@@ -174,6 +174,13 @@ export default function Cart({ items, setItems }: Props) {
                   placeholder='https://www.facebook.com/tatnguon001'
                   onChange={changeState}
                 />
+                <div className='text-xs italic'>
+                  <p>Ví dụ</p>
+                  <div className='pl-2'>
+                    <p>https://www.facebook.com/xxxxx</p>
+                    <p>https://www.fb.com/xxxxx</p>
+                  </div>
+                </div>
               </div>
             </div>
             <hr />
@@ -195,6 +202,12 @@ export default function Cart({ items, setItems }: Props) {
                 rightIcon={FaArrowRightLong}
                 onClick={async () => {
                   if (state.fbUrl && state.name) {
+                    if (
+                      !/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
+                        state.fbUrl
+                      )
+                    )
+                      return alert('Link FB không đúng định dạng');
                     try {
                       setLoading(true);
                       await axios.post('/api/order', {
