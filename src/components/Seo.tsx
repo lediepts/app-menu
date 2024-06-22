@@ -3,19 +3,19 @@ import { useRouter } from 'next/router';
 
 // !STARTERCONF Change these default meta
 const defaultMeta = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
-  siteName: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'NẤM FOOD',
+  siteName: 'NẤM FOOD',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
+    'Gà rán-mỳ cay- pizza NẤM FOOD🍗🥘🍕🍔🍝,NH mb bank 23101995686868🏦',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://###',
+  url: 'https://nam-food.vercel.app',
   type: 'website',
   robots: 'follow, index',
   /**
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
-  image: 'https://###/images/large-og.png',
+  image: 'https://nam-food.vercel.app/images/ogp.png',
 };
 
 type SeoProps = {
@@ -97,7 +97,7 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
   {
     rel: 'apple-touch-icon',
     sizes: '180x180',
-    href: '/favicon/apple-touch-icon.png',
+    href: '/favicon/apple-icon-180x180.png',
   },
   {
     rel: 'icon',
@@ -112,10 +112,5 @@ const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
     href: '/favicon/favicon-16x16.png',
   },
   { rel: 'manifest', href: '/favicon/site.webmanifest' },
-  {
-    rel: 'mask-icon',
-    href: '/favicon/safari-pinned-tab.svg',
-    color: '#00e887',
-  },
   { rel: 'shortcut icon', href: '/favicon/favicon.ico' },
 ];
