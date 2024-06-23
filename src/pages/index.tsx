@@ -12,7 +12,7 @@ import Link from 'next/link';
 import PrimaryLink from '@/components/links/PrimaryLink';
 import NextImage from '@/components/NextImage';
 import Button from '@/components/buttons/Button';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaShoppingCart } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa6';
 import Cart from '@/components/Cart';
 import { IoMdRemoveCircle } from 'react-icons/io';
@@ -80,11 +80,12 @@ export default function HomePage() {
     <Layout>
       {/* <Seo templateTitle='Home' /> */}
       <Seo templateTitle='Menu' />
-      <main className='flex min-h-screen flex-col items-center gap-2 bg-[#EBDECD] pb-20'>
+      <main className='flex min-h-screen flex-col items-center gap-2 bg-[#EBDECD] pb-14'>
         <h1 className='mt-4 text-3xl font-bold'>Nấm Food</h1>
         <Link
           className='text-blue-400 underline hover:text-blue-600'
           href={'https://www.facebook.com/tatnguon001'}
+          target='_blank'
         >
           FB Phạm Ngọc Ánh
         </Link>
@@ -131,6 +132,27 @@ export default function HomePage() {
               </div>
             );
           })}
+        </div>
+        <div className='mt-10'>
+          <p className='text-center text-xs'>
+            ©{new Date().getFullYear()} <i>@lediepts, Four Seasons inc.</i>
+          </p>
+          <div className='mt-2 flex items-center justify-center gap-4'>
+            <Link
+              target='_blank'
+              href={'https://github.com/lediepts'}
+              className='text-2xl text-black drop-shadow-md'
+            >
+              <FaGithub />
+            </Link>
+            <Link
+              target='_blank'
+              href={'https://www.facebook.com/lediepts'}
+              className='text-2xl text-[#0866FF] drop-shadow-md'
+            >
+              <FaFacebook />
+            </Link>
+          </div>
         </div>
         <Cart items={items} setItems={setItems} />
       </main>

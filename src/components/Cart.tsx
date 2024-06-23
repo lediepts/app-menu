@@ -70,6 +70,7 @@ export default function Cart({ items, setItems }: Props) {
                 <p className='flex-1'>Tên</p>
                 <p className='w-24'>Số lượng</p>
                 <p className='w-14'>Giá</p>
+                <p className='w-14'></p>
               </div>
 
               {items.map((v) => {
@@ -107,11 +108,12 @@ export default function Cart({ items, setItems }: Props) {
                         <CiCirclePlus />
                       </button>
                     </div>
-                    <p className='w-14'>{v.price}¥</p>
+                    <p className='w-16'>x {v.price} =</p>
+                    <p className='w-14'>{v.price * v.quantity}¥</p>
                   </div>
                 );
               })}
-              <div className='flex gap-2'>
+              <div className='flex gap-2 p-1'>
                 <p className='flex-1 text-end'>Tổng</p>
                 <p className='w-max'>
                   {items.reduce((p, c) => {
@@ -206,23 +208,25 @@ export default function Cart({ items, setItems }: Props) {
                       !/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/.test(
                         state.fbUrl
                       )
-                    )
+                    ) {
                       return alert('Link FB không đúng định dạng');
-                    try {
-                      setLoading(true);
-                      await axios.post('/api/order', {
-                        ...state,
-                        items,
-                      });
-                      setItems([]);
-                      localStorage.removeItem('items');
-                      setStep(3);
-                    } catch (error) {
-                      alert(
-                        'Hệ thống đặt hàng hiện đang sảy ra lỗi, vui lòng thử lại sau hoặc liên hệ với quản trị viên( Thông tin liên hệ tại trang chủ)'
-                      );
+                    } else {
+                      try {
+                        setLoading(true);
+                        await axios.post('/api/order', {
+                          ...state,
+                          items,
+                        });
+                        setItems([]);
+                        localStorage.removeItem('items');
+                        setStep(3);
+                      } catch (error) {
+                        alert(
+                          'Hệ thống đặt hàng hiện đang sảy ra lỗi, vui lòng thử lại sau hoặc liên hệ với quản trị viên( Thông tin liên hệ tại trang chủ)'
+                        );
+                      }
+                      setLoading(false);
                     }
-                    setLoading(false);
                   }
                 }}
               >
